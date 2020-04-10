@@ -1,4 +1,4 @@
-variable "s3_id" {
+variable "s3_bucket" {
   default = ""
 }
 
