@@ -3,10 +3,14 @@ provider "aws" {
 }
 
 #=================================S3 backend====================================
+resource "aws_s3_bucket" "s3" {
+  bucket = "terraform-laboratory-2"
+  acl    = "private"
+}
 
 terraform {
   backend "s3" {
-    bucket = "terraform-laboratory"          // Bucket where to SAVE Terraform State
+    bucket = "terraform-laboratory-2"          // Bucket where to SAVE Terraform State
     key    = "prod/terraform.tfstate"             // Object name in the bucket to SAVE Terraform State
     region = "eu-central-1"                         // Region where bycket created
   }
@@ -88,6 +92,8 @@ module "RDS" {
 
 module "ECS" {
   source              = "./modules/ECS"
+  
+  
   lb_arn              = "${module.EC2.lb_arn}"
   lb                  = "${module.EC2.lb}"
   public_subnet_names = "${module.network.data_az}"
@@ -99,4 +105,10 @@ module "ECS" {
   ecs_cluster_name    = "${var.ecs_cluster_name}"
   ecs_service_name    = "${var.ecs_service_name}"
   ecs_task_definition_family = "${var.ecs_task_definition_family}"
+}
+
+module "Clodfront" {
+  source      = "./modules/Clodfront"
+  env         = "${var.env}"
+  project     = "${var.project}"
 }
