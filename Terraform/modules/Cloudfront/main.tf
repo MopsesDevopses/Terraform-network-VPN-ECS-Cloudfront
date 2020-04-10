@@ -51,7 +51,7 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
 }
 
 locals {
-  s3_origin_id = "${aws_s3_bucket.s3.id}".s3.amazonaws.com"
+  s3_origin_id = "${aws_s3_bucket.s3.id}.s3.amazonaws.com"
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
