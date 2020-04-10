@@ -4,11 +4,11 @@ provider "aws" {
 
 #=================================S3 backend====================================
 
-resource "aws_s3_bucket" "s3" {
+/*resource "aws_s3_bucket" "s3" {
   bucket = "${var.s3_bucket}"
   acl    = "private"
 }
-
+*/
 /*
 resource "aws_s3_bucket_policy" "s3_bucket_policy" {
   bucket = "${aws_s3_bucket.s3.id}"
