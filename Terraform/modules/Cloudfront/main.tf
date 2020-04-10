@@ -51,12 +51,12 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
 }
 
 locals {
-  s3_origin_id = "${var.s3_id}.s3.amazonaws.com"
+  s3_origin_id = "${aws_s3_bucket.s3.шв}".s3.amazonaws.com"
 }
 
 resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
-    domain_name = "${aws_s3_bucket.code-bucket-website.bucket_regional_domain_name}"
+    domain_name = "${aws_s3_bucket.s3.bucket_regional_domain_name}"
     origin_id   = "${local.s3_origin_id}"
 
     s3_origin_config {
