@@ -33,7 +33,7 @@ POLICY
 
 terraform {
   backend "s3" {
-    bucket = "${var.s3_id}"          // Bucket where to SAVE Terraform State
+    bucket = "${var.s3_bucket}"          // Bucket where to SAVE Terraform State
     key    = "prod/terraform.tfstate"             // Object name in the bucket to SAVE Terraform State
     region = "eu-central-1"                         // Region where bycket created
   }
