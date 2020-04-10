@@ -4,37 +4,10 @@ provider "aws" {
 
 #=================================S3 backend====================================
 
-/*resource "aws_s3_bucket" "s3" {
-  bucket = "${var.s3_bucket}"
-  acl    = "private"
-}
-*/
-/*
-resource "aws_s3_bucket_policy" "s3_bucket_policy" {
-  bucket = "${aws_s3_bucket.s3.id}"
-
-  policy = <<POLICY
-{
-  "Version": "2012-10-17",
-  "Id": "Polisi",
-  "Statement": [
-    {
-      "Sid": "1",
-      "Effect": "Allow",
-      "Principal": "*",
-      "Action": "s3:*",
-      "Resource": "${var.cloudfront_arn}",
-    }
-  ]
-}
-POLICY
-}
-*/
-
 terraform {
   backend "s3" {
     bucket = "terraform-laboratory"          // Bucket where to SAVE Terraform State
-    key    = "${var.project}/${var.env}/terraform.tfstate"             // Object name in the bucket to SAVE Terraform State
+    key    = "prod/terraform.tfstate"             // Object name in the bucket to SAVE Terraform State
     region = "eu-central-1"                         // Region where bycket created
   }
 }
