@@ -1,3 +1,31 @@
+resource "aws_s3_bucket" "s3" {
+  bucket = "${var.s3_bucket}"
+  acl    = "private"
+}
+
+resource "aws_s3_bucket_policy" "s3_bucket_policy" {
+  bucket = "${aws_s3_bucket.s3.id}"
+
+  policy = <<POLICY
+{
+  "Version": "2008-10-17",
+  "Id": "PolicyForCloudFrontPrivateContent",
+  "Statement": [
+      {
+          "Sid": "1",
+          "Effect": "Allow",
+          "Principal": {
+              "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity ${aws_cloudfront_distribution.s3_distribution.id}"
+          },
+          "Action": "s3:GetObject",
+          "Resource": "${aws_s3_bucket_policy.s3_bucket_policy.arn}/*"
+    }
+  ]
+}
+
+POLICY
+}
+
 data "aws_iam_policy_document" "bucket_policy" {
   statement {
     sid = "S3GetObjectForCloudFront"
