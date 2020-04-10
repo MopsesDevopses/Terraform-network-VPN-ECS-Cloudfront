@@ -1,4 +1,4 @@
-Terraform-network-VPN-ECS-Сдщгвакщте
+Terraform-network-VPN-ECS-Cloudfront
 
 This infrastructure include modules:
 
