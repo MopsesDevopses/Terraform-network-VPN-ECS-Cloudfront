@@ -107,8 +107,8 @@ module "ECS" {
   ecs_task_definition_family = "${var.ecs_task_definition_family}"
 }
 
-module "Clodfront" {
-  source      = "./modules/Clodfront"
+module "Cloudfront" {
+  source      = "./modules/Cloudfront"
   env         = "${var.env}"
   project     = "${var.project}"
 }
