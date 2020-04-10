@@ -3,14 +3,10 @@ provider "aws" {
 }
 
 #=================================S3 backend====================================
-resource "aws_s3_bucket" "s3" {
-  bucket = "terraform-laboratory-2"
-  acl    = "private"
-}
 
 terraform {
   backend "s3" {
-    bucket = "terraform-laboratory-2"          // Bucket where to SAVE Terraform State
+    bucket = "terraform-laboratory"          // Bucket where to SAVE Terraform State
     key    = "prod/terraform.tfstate"             // Object name in the bucket to SAVE Terraform State
     region = "eu-central-1"                         // Region where bycket created
   }
