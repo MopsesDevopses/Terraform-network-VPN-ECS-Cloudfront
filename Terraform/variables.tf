@@ -2,6 +2,10 @@ variable "region" {
   default = ""
 }
 
+variable "tf_state_bucket" {
+  default = ""
+}
+
 variable "s3_bucket" {
   default = ""
 }
@@ -13,6 +17,7 @@ variable "s3_id" {
 variable "cloudfront_arn" {
   default = ""
 }
+
 #=====Security Group
 
 variable "allow_ports" {
