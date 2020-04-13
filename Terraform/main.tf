@@ -107,4 +107,5 @@ module "Cloudfront" {
   source      = "./modules/Cloudfront"
   env         = "${var.env}"
   project     = "${var.project}"
+  s3_bucket   = "${var.s3_bucket}"
 }
