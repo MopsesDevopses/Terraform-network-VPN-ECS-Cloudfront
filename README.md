@@ -4,7 +4,6 @@ This infrastructure include modules:
 
 - EC2 with autoscaling, load balancer
 - ECS
-- EFS
 - IAM
 - Network with VPC, Rout table, NAT
 - RDS
