@@ -71,7 +71,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
   enabled             = true
   is_ipv6_enabled     = true
-  comment             = "Some comment"
+  comment             = "${var.project}-${var.env}"
   default_root_object = "index.html"
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
